@@ -12,5 +12,5 @@ As shown in Fig. 3, higher temperatures and stresses reduce the extent of the pr
 <image src="images/image3.png"><br><br>
 <b>Important parameter and equation:</b>Fig. 4 shows the specimen (pin-loaded) to study the creep behavior of aluminium.
 <image src="images/image4.png"><br><br>
-<b>Engineering Stress  (N/mm2)</b>= Load (in Kg)*9.81(m/sec2)/(thickness (mm)*width (mm))
+<b>Engineering Stress  (N/mm2)</b>= Load (in Kg)*9.81(m/sec2)/(thickness (mm)*width (mm))<br>
 Strain () = change in length (mm)/Gauge Length (mm)
