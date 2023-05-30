@@ -11,6 +11,6 @@ Typical shape of a creep curve is shown in Fig. 2. When the load is applied, an 
 As shown in Fig. 3, higher temperatures and stresses reduce the extent of the primary creep and practically eliminate the second stage, with the result that the creep rate accelerates almost from the beginning of the loading. In contrast, with the decrease in temperature and/or the stress, the first two stages become clearly defined.<br><br>
 <image src="images/image3.png"><br><br>
 <b>Important parameter and equation:</b>Fig. 4 shows the specimen (pin-loaded) to study the creep behavior of aluminium.
-<image src="<images/image4.png"><br><br>
+<image src="images/image4.png"><br><br>
 <b>Engineering Stress  (N/mm2)</b>= Load (in Kg)*9.81(m/sec2)/(thickness (mm)*width (mm))
 Strain () = change in length (mm)/Gauge Length (mm)
