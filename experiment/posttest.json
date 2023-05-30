@@ -2,12 +2,12 @@
   "version": 2.0,
   "questions": [
     {
-      "question": "This is a Sample Question 1?",
+      "question": "1. Creep rate in the tertiary stage",
       "answers": {
-        "a": "answer1",
-        "b": "answer2",
-        "c": "answer3",
-        "d": "answer4"
+        "a": "Increases",
+        "b": "Decreases",
+        "c": "Remains constant",
+        "d": "First increases and then decreases"
       },
       "explanations": {
         "a": "Explanation 1  <a href='www.google.com'>here</a>",
@@ -19,12 +19,46 @@
       "difficulty": "beginner"
     },
     {
-      "question": "This is a Sample Question 2?",
+      "question": "2. It is given that copper can creep at and above 0.5 T_m, where T_m has its usual meaning. Calculate the minimum temperature (in oC) at which Copper can creep? Melting point of copper is 1084 oC",
       "answers": {
-        "a": "answer1",
-        "b": "answer2",
-        "c": "answer3",
-        "d": "answer4"
+        "a": "542",
+        "b": "405.5",
+        "c": "Room temperature",
+        "d": "1084"
+      },
+      "explanations": {
+        "a": "Explanation 1  <a href='www.google.com'>here</a>",
+        "b": "Explanation 2",
+        "c": "Explanation 2",
+        "d": "Explanation 2"
+      },
+      "correctAnswer": "b",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "3. Void formation takes place in which stage?",
+      "answers": {
+        "a": "Stage II",
+        "b": "Stage III",
+        "c": "Stage I",
+        "d": "When instantaneous strain develops"
+      },
+      "explanations": {
+        "a": "Explanation 1  <a href='www.google.com'>here</a>",
+        "b": "Explanation 2",
+        "c": "Explanation 2",
+        "d": "Explanation 2"
+      },
+      "correctAnswer": "b",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "4. In which stage there is a balance between strain hardening and softening?",
+      "answers": {
+        "a": "Stage III",
+        "b": "When instantaneous stain develops",
+        "c": "Stage II",
+        "d": "Stage I"
       },
       "explanations": {
         "a": "Explanation 1  <a href='www.google.com'>here</a>",
@@ -33,6 +67,23 @@
         "d": "Explanation 2"
       },
       "correctAnswer": "c",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "5. Which stage is of longest duration?",
+      "answers": {
+        "a": "Stage I",
+        "b": "Duration where instantaneous strain develops",
+        "c": "Stage III",
+        "d": "Stage II"
+      },
+      "explanations": {
+        "a": "Explanation 1  <a href='www.google.com'>here</a>",
+        "b": "Explanation 2",
+        "c": "Explanation 2",
+        "d": "Explanation 2"
+      },
+      "correctAnswer": "d",
       "difficulty": "beginner"
     }
   ]
