@@ -1,13 +1,167 @@
 <!DOCTYPE html>
-<html>
-<head>
-	<!-- Add CSS at the head of HTML file -->
-    <link rel="stylesheet" href="./css/main.css">
-</head>
-<body>
-		<!-- Your code goes here-->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Creep Test</title>
+    <link rel="stylesheet" href="css/main.css" />
+    <script>
+      var SAMPLE_ASSETS_PATH = "images/sample-iron/";
+    </script>
+  </head>
+  <body>
+    <div id="app">
+      <div class="menu">
+        <div class="nav-tabs">
+          <div class="nav-item d-none" data-target="#tools">Tools</div>
+          <div class="nav-item active" data-target="#instr">Instructions</div>
+        </div>
 
-	<!-- Add JS at the bottom of HTML file --> 
-        <script src="./js/main.js"></script>
-</body>
+        <div class="nav-content">
+          <div id="tools" class="nav-pane">
+            <div class="list text-center">
+              <div>
+                <img label="utmMachine" src="images/img/utm-machine-logo.png" width="100" draggable="true" />
+                <p>UTM Machine</p>
+              </div>
+              <hr />
+              <div>
+                <img label="vernierCaliper" src="images/img/vernier-caliper-logo-sm.png" draggable="true" width="200" />
+                <p>Vernier Caliper</p>
+              </div>
+              <hr />
+              <div>
+                <img label="sample1" src="images/sample-iron/sample1.png" draggable="true" width="200" />
+                <p>Iron Sample</p>
+              </div>
+              <hr />
+            </div>
+          </div>
+
+          <div id="instr" class="nav-pane active">
+            <div id="accordion" class="accordion">
+              <div id="step1" class="box active">
+                <div class="label">Step 1: Gauge length of the sample</div>
+                <div class="content">
+                  <ul>
+                    <li>Drag the vernier caliper.</li>
+                    <li>Right click on vernier caliper and click on pin.</li>
+                    <li>Place the sample on the vernier caliper.</li>
+                    <li>Take the gauge length and enter it below:</li>
+                  </ul>
+                  <div class="mt-1">Length: <input id="step1Length" type="number" value="" /> mm</div>
+                </div>
+              </div>
+
+              <div id="step2" class="box disabled">
+                <div class="label">Step 2: Take the diameter of the sample</div>
+                <div class="content">
+                  <ul>
+                    <li>Right click on vernier caliper and click on unload sample.</li>
+                    <li>Now, Right click on sample and click on rotate.</li>
+                    <li>Place the sample on the vernier caliper.</li>
+                    <li>Take the diameter and enter it below:</li>
+                  </ul>
+
+                  <div class="mt-1">Diameter: <input id="step2Dia" type="number" value="" /> mm</div>
+                </div>
+              </div>
+
+              <div id="step3" class="box disabled">
+                <div class="label">Step 3: Place sample on UTM machine.</div>
+                <div class="content">
+                  <ul>
+                    <li>Right click on sample to rotate.</li>
+                    <li>Now, right click on the machine to pin.</li>
+                    <li>Now,place the sample on the machine.</li>
+                    <li>You can adjust zoom level also (Via Mouse Wheel).</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div id="step4" class="box disabled">
+                <div class="label">Step 4: Start the test.</div>
+                <div class="content">
+                  <ul>
+                    <li>Click below buttons to start the machine.</li>
+                  </ul>
+                  <div class="mt-1">
+                    <button id="startTest">Start Test</button>
+                    <button id="showGraphBtn" onclick="showGraph()" disabled>Plot</button>
+                  </div>
+
+                  <canvas id="outputGraphA"></canvas>
+
+                  <div class="mt-1 dataTable">
+                    <table>
+                      <thead>
+                        <tr>
+                          <td>Time in hrs</td>
+                          <td>Elongation Reading (ΔL)</td>
+                        </tr>
+                      </thead>
+                      <tbody id="testData"></tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+
+              <div id="step5" class="box disabled">
+                <div class="label">Step 5: Activity.</div>
+                <div class="content">Click next button to continue.</div>
+              </div>
+
+              <div id="step6" class="box disabled">
+                <div class="label">Step 6: Measure final length.</div>
+                <div class="content">
+                  <ul>
+                    <li>Right click on vernier caliper and click on "Pin"</li>
+                    <li>Place the sample on the venier caliper and take the length.</li>
+                  </ul>
+
+                  <div class="mt-1">Change in length is negligible.</div>
+                </div>
+              </div>
+
+              <div id="step7" class="box disabled">
+                <div class="label">Step 7: Measure final diameter</div>
+                <div class="content">
+                  <ul>
+                    <li>Right click on venier caliper and click on unload sample.</li>
+                    <li>Now, Right click on sample and click on rotate.</li>
+                    <li>Place the sample on the venier caliper and take the diameter.</li>
+                  </ul>
+
+                  <div class="mt-1">Change in diameter is negligible.</div>
+                </div>
+              </div>
+
+              <div id="step8" class="box disabled">
+                <div class="label">Step 8: Results</div>
+                <div class="content"></div>
+              </div>
+            </div>
+
+            <div class="actions">
+              <!-- <image src="images/arrow.png" width="25px" class="blink" id="arrowNext" /> -->
+              <button class="btn" id="btnNext" onclick="handle()">Next</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="slider" id="slider"></div>
+      <div class="main">
+        <canvas class="dropzone" id="gui">Your browser does not support the HTML5 canvas tag.</canvas>
+      </div>
+    </div>
+
+    <script src="js/context.js"></script>
+    <script src="js/components.js"></script>
+    <script src="js/modal.js"></script>
+    <script src="js/main.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
+
+    <script src="js/index.js"></script>
+  </body>
 </html>
