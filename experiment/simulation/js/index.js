@@ -1,138 +1,160 @@
 const charts = {};
 const schema = ["elongation", "time"];
-const readingData = [
-  [0.01, 0.382],
-  [0.89149, 0.425],
-  [3.36693, 0.4535],
-  [6.06603, 0.479],
-  [9.19301, 0.5015],
-  [12.16965, 0.5135],
-  [15.14629, 0.523],
-  [18.12293, 0.5335],
-  [21.09957, 0.538],
-  [24.07621, 0.549],
-  [27.05285, 0.557],
-  [30.02949, 0.567],
-  [33.00613, 0.5755],
-  [35.98277, 0.584],
-  [38.95941, 0.5925],
-  [41.93605, 0.5985],
-  [44.91269, 0.606],
-  [47.88933, 0.615],
-  [50.86597, 0.6215],
-  [53.84261, 0.629],
-  [56.81925, 0.637],
-  [59.79589, 0.644],
-  [62.77253, 0.6485],
-  [65.74917, 0.655],
-  [68.72581, 0.6595],
-  /*[71.70245, 0.667],
- [74.67909, 0.6735],
- [77.65573, 0.6835],
- [80.63237, 0.6935],
- [83.60901, 0.701],
- [86.58565, 0.7045],
- [89.56229, 0.71],
- [92.53893, 0.7175],
- [95.51557, 0.725],
- [98.49221, 0.735],
- [101.46885, 0.7435],
- [104.44549, 0.7615],
- [107.42213, 0.7775],
- [110.33263, 0.799],
- [113.57895, 0.828],
- [116.15361, 0.857],
- [118.50185, 0.896],
- [119.40219, 0.8965],
- [121.13503, 0.9365],
- [121.47849, 0.963],
- [123.83876, 1.0275],
- [123.8409, 1.028],
- [126.72895, 1.102],
- [126.23285, 1.0385],
- [127.3987, 1.157],
- [128.95016, 1.3255], */
+const readingData1 = [
+  [0.01, 0.38],
+  //[0.89, 0.43],
+  [3.37, 0.45],
+  //[6.07, 0.48],
+  [9.19, 0.5],
+  //[12.17, 0.51],
+  [15.15, 0.52],
+  //[18.12, 0.53],
+  [21.1, 0.53],
+  //[24.08, 0.55],
+  [27.05, 0.56],
+  //[30.03, 0.57],
+  [33.01, 0.58],
+  // [35.98, 0.58],
+  [38.96, 0.59],
+  //[41.94, 0.60],
+  [44.91, 0.61],
+  // [47.89, 0.62],
+  [50.87, 0.62],
+  //[53.84, 0.63],
+  [56.82, 0.64],
+  // [59.80, 0.64],
+  [62.77, 0.65],
+  //[65.75, 0.66],
+  [68.73, 0.66],
+  //[71.70, 0.67],
+  [74.68, 0.67],
+  //[77.66, 0.68],
+  [80.63, 0.69],
+  //[83.61, 0.70],
+  [86.59, 0.7],
+  //[89.56, 0.71],
+  [92.54, 0.72],
+  //[95.52, 0.73],
+  [98.49, 0.74],
+  //[101.47, 0.74],
+  [104.45, 0.76],
+  //[107.42, 0.78],
+  [110.33, 0.8],
+  //[113.58, 0.83],
+  [116.15, 0.86],
+  //[118.50, 0.90],
+  [119.4, 0.9],
+  //[121.14, 0.94],
+  [121.48, 0.96],
+  //[123.84, 1.03],
+  [123.84, 1.03],
+  //[126.73, 1.10],
+  [126.23, 1.04],
+  //[127.40, 1.16],
+  [128.95, 1.33],
 ];
 
-/*[
-  [0.01, 0.4055],
-  [2.71055, 0.45],
-  [4.9443, 0.499],
-  [7.1259, 0.5405],
-  [10.15515, 0.571],
-  [13.16186, 0.5965],
-  [16.2708, 0.614],
-  [19.11514, 0.633],
-  [22.09178, 0.6505],
-  [25.06842, 0.666],
-  [28.04506, 0.683],
-  [31.0217, 0.698],
-  [33.99834, 0.706],
-  [36.97498, 0.7285],
-  [39.8965, 0.7505],
-  [42.92826, 0.777],
-  [45.84477, 0.793],
-  [48.88154, 0.8115],
-  [51.85818, 0.828],
-  [54.93405, 0.8435],
-  [57.81146, 0.86],
-  [60.7881, 0.877],
-  [63.76474, 0.8965],
-  [66.93432, 0.9165],
-  [69.65188, 0.9415],
-  [72.69467, 0.9585],
-  [75.72643, 0.9835],
-  [78.78024, 1.012],
-  [81.44819, 1.031],
-  [84.60123, 1.0625],
-  [87.18098, 1.096],
-  [89.70699, 1.138],
-  [89.89303, 1.104],
-  [92.53893, 1.1585],
-  [94.77777, 1.206],
-  [95.51557, 1.1845],
-  [97.61812, 1.236],
-  [97.83074, 1.1885],
-  [99.99325, 1.283],
-  [101.28845, 1.324],
-  [102.70361, 1.3835],
-  [104.03207, 1.445],
-  
-  
-
-
-
-
-];*/
+const readingData2 = [
+  [0.01, 0.41],
+  //[2.71, 0.45],
+  [4.94, 0.5],
+  //[7.13, 0.54],
+  [10.16, 0.57],
+  //[13.16, 0.60],
+  [16.27, 0.61],
+  //[19.12, 0.63],
+  [22.09, 0.65],
+  //[25.07, 0.67],
+  [28.05, 0.68],
+  //[31.02, 0.70],
+  [34.0, 0.71],
+  //[36.97, 0.73],
+  [39.9, 0.75],
+  //[42.93, 0.78],
+  [45.84, 0.79],
+  //[48.88, 0.81],
+  [51.86, 0.83],
+  //[54.93, 0.84],
+  [57.81, 0.86],
+  //[60.79, 0.88],
+  [63.76, 0.9],
+  //[66.93, 0.92],
+  [69.65, 0.94],
+  //[72.69, 0.96],
+  [75.73, 0.98],
+  //[78.78, 1.01],
+  [81.45, 1.03],
+  //[84.60, 1.06],
+  [87.18, 1.1],
+  //[89.71, 1.14],
+  [89.89, 1.1],
+  //[92.54, 1.16],
+  [94.78, 1.21],
+  //[95.52, 1.18],
+  [97.62, 1.24],
+  //[97.83, 1.19],
+  [99.99, 1.28],
+  //[101.29, 1.32],
+  [102.7, 1.38],
+  //[104.03, 1.45],
+];
+const readingData3 = [
+  [0.01, 0.87],
+  [0.02, 0.78],
+  [0.03, 0.75],
+  [1.12, 0.92],
+  [1.3, 0.83],
+  [1.61, 1.01],
+  [1.52, 0.97],
+  [3.57, 1.06],
+  [5.39, 1.11],
+  [7.21, 1.15],
+  [9.16, 1.19],
+  [10.7, 1.23],
+  [12.48, 1.31],
+  [12.17, 1.27],
+  [13.91, 1.36],
+  [15.08, 1.45],
+  [14.55, 1.4],
+  [15.8, 1.53],
+  [14.82, 1.49],
+  [16.13, 1.59],
+];
 
 // x axis
 const time1 = [
-  0.01, 0.89149, 3.36693, 6.06603, 9.19301, 12.16965, 15.14629, 18.12293, 21.09957, 24.07621, 27.05285, 30.02949,
-  33.00613, 35.98277, 38.95941, 41.93605, 44.91269, 47.88933, 50.86597, 53.84261, 56.81925, 59.79589, 62.77253,
-  65.74917, 68.72581 /*71.70245, 74.67909,77.65573,80.63237,83.60901,86.58565,89.56229,92.53893,
-  95.51557,98.49221,101.46885,104.44549,107.42213,110.33263,113.57895,116.15361,118.50185,119.40219,121.13503,121.47849,123.83876,
-  123.8409,126.72895,126.23285,127.3987,128.95016,*/,
+  0.01, 0.89, 3.37, 6.07, 9.19, 12.17, 15.15, 18.12, 21.1, 24.08, 27.05, 30.03, 33.01, 35.98, 38.96, 41.94, 44.91,
+  47.89, 50.87, 53.84, 56.82, 59.8, 62.77, 65.75, 68.73, 71.7, 74.68, 77.66, 80.63, 83.61, 86.59, 89.56, 92.54, 95.52,
+  98.49, 101.47, 104.45, 107.42, 110.33, 113.58, 116.15, 118.5, 119.4, 121.14, 121.48, 123.84, 123.84, 126.73, 126.23,
+  127.4, 128.95,
 ];
 // y axis
 const elongation1 = [
-  0.382, 0.425, 0.4535, 0.479, 0.5015, 0.5135, 0.523, 0.5335, 0.538, 0.549, 0.557, 0.567, 0.5755, 0.584, 0.5925, 0.5985,
-  0.606, 0.615, 0.6215, 0.629, 0.637, 0.644, 0.6485, 0.655,
-  0.6595 /*0.667,0.6735,0.6835,0.6935,0.701,0.7045,0.71,0.7175,0.725,0.735,0.7435,0.7615,0.7775,0.799,0.828,0.857,0.896,0.8965,0.9365,
-  0.963,1.0275,1.028,1.102,1.0385,1.157,1.3255,*/,
+  0.38, 0.43, 0.45, 0.48, 0.5, 0.51, 0.52, 0.53, 0.54, 0.55, 0.56, 0.57, 0.58, 0.58, 0.59, 0.6, 0.61, 0.62, 0.62, 0.63,
+  0.64, 0.64, 0.65, 0.66, 0.66, 0.68, 0.67, 0.68, 0.69, 0.7, 0.7, 0.71, 0.72, 0.73, 0.74, 0.74, 0.76, 0.78, 0.8, 0.83,
+  0.86, 0.9, 0.9, 0.94, 0.96, 1.03, 1.03, 1.1, 1.04, 1.16, 1.33,
 ];
 
-/*const time2 =[
-  0.01,2.71055,4.9443,7.1259,10.15515,13.16186,16.2708,19.11514,22.09178,25.06842,28.04506,31.0217,33.99834,36.97498,39.8965,42.92826,45.84477,48.88154,
-  51.85818,54.93405,57.81146,60.7881,63.76474,66.93432,69.65188,72.69467,75.72643,78.78024,81.44819,84.60123,87.18098,89.70699,89.89303,92.53893,
-  94.77777,95.51557,97.61812,97.83074,99.99325,101.28845,102.70361,104.03207,
-  
+const time2 = [
+  0.01, 2.71, 4.94, 7.13, 10.16, 13.16, 16.27, 19.12, 22.09, 25.07, 28.05, 31.02, 34.0, 36.97, 39.9, 42.93, 45.84,
+  48.88, 51.86, 54.93, 57.81, 60.79, 63.76, 66.93, 69.65, 72.69, 75.73, 78.78, 81.45, 84.6, 87.18, 89.71, 89.89, 92.54,
+  94.78, 95.52, 97.62, 97.83, 99.99, 101.29, 102.7, 104.03,
 ];
 
-const elongation2 =[
-  0.4055,0.45,0.499,0.5405,0.571,0.5965,0.614,0.633,0.6505,0.666,0.683,0.698,0.706,0.7285,0.7505,0.777,0.793,0.8115,0.828,0.8435,0.86,0.877,
-  0.8965,0.9165,0.9415,0.9585,0.9835,1.012,1.031,1.0625,1.096,1.138,1.104,1.1585,1.206,1.1845,1.236,1.1885,1.283,1.324,1.3835,1.445,
+const elongation2 = [
+  0.41, 0.45, 0.5, 0.54, 0.57, 0.6, 0.61, 0.63, 0.65, 0.67, 0.68, 0.7, 0.71, 0.73, 0.75, 0.78, 0.79, 0.81, 0.83, 0.84,
+  0.86, 0.88, 0.9, 0.92, 0.94, 0.96, 0.98, 1.01, 1.03, 1.06, 1.1, 1.14, 1.1, 1.16, 1.21, 1.18, 1.24, 1.19, 1.28, 1.32,
+  1.38, 1.45,
+];
 
-];*/
+const time3 = [
+  0.01, 0.02, 0.03, 1.12, 1.3, 1.61, 1.52, 3.57, 5.39, 7.21, 9.16, 10.7, 12.48, 12.17, 13.91, 15.08, 14.55, 15.81,
+  14.82, 16.13,
+];
+
+const elongation3 = [
+  0.87, 0.78, 0.75, 0.92, 0.83, 1.01, 0.97, 1.06, 1.11, 1.15, 1.91, 1.24, 1.31, 1.27, 1.36, 1.45, 1.4, 1.53, 1.49, 1.59,
+];
 
 var currPos = 0;
 
@@ -149,7 +171,8 @@ window.addEventListener("load", function () {
   setTimeout(() => {
     if (vc) vc.init();
     if (sample1) sample1.init();
-  }, 1500);
+    //utm.init();
+  }, 1000);
 });
 
 function handle() {
@@ -234,6 +257,7 @@ function handleStep3() {
           data: [],
           borderColor: "#3e95cd",
           fill: false,
+          label: "Test 1",
         },
       ],
     },
@@ -242,10 +266,7 @@ function handleStep3() {
   );
 
   document.getElementById("btnNext").disabled = true;
-  // document.getElementById("arrowNext").classList.add("disabled");
-
   document.getElementById("startTest").addEventListener("click", function testHandler(e) {
-    let tableBody = document.getElementById("testData");
     e.currentTarget.disabled = true;
     document.getElementById("btnNext").disabled = true;
     // document.getElementById("arrowNext").classList.add("disabled");
@@ -261,9 +282,113 @@ function handleStep3() {
       utm.start(0.015, 1);
     }, 4000);
 
-    let intr = setInterval(() => {
-      if (currPos >= readingData.length) {
-        clearInterval(intr);
+    let isFirstDone = false;
+    let isSecondDone = false;
+
+    let intr1 = setInterval(() => {
+      if (currPos >= readingData1.length) {
+        clearInterval(intr1);
+        isFirstDone = true;
+        currPos = 0;
+        // document.getElementById("startTest").disabled = false;
+        // document.getElementById("startTest").innerHTML = "Done";
+        // document.getElementById("showGraphBtn").disabled = false;
+        // utm.stop();
+        // document.getElementById("btnNext").disabled = false;
+        // document.getElementById("arrowNext").classList.remove("disabled");
+        return;
+      }
+
+      const tableData1 = readingData1; // Change to the appropriate data array for Table 1 (readingData1, readingData2, or readingData3)
+
+      const tableBody1 = document.getElementById("testData1");
+
+      tableBody1.innerHTML += `
+        <tr>
+          <td>${tableData1[currPos][0]}</td>
+          <td>${tableData1[currPos][1]}</td>
+        </tr>
+      `;
+
+      currPos++;
+
+      let progress1 = (elongation1.length / tableData1.length) * currPos;
+
+      const chart1Data = {
+        labels: time1,
+        datasets: [
+          {
+            data: elongation1.slice(0, progress1),
+            borderColor: "#3e95cd",
+            fill: false,
+            label: "Test 1",
+          },
+        ],
+      };
+
+      plotGraph(document.getElementById("outputGraphA").getContext("2d"), chart1Data, "Time in hrs", "Strain");
+
+      // document.querySelector(".menu").scrollTo(0, document.querySelector(".menu").scrollHeight);
+    }, 500);
+
+    let intr2 = setInterval(() => {
+      if (!isFirstDone) return;
+
+      if (currPos >= readingData2.length) {
+        clearInterval(intr2);
+        isSecondDone = true;
+        currPos = 0;
+        // document.getElementById("startTest").disabled = false;
+        // document.getElementById("startTest").innerHTML = "Done";
+        // document.getElementById("showGraphBtn").disabled = false;
+        // utm.stop();
+        // document.getElementById("btnNext").disabled = false;
+        // document.getElementById("arrowNext").classList.remove("disabled");
+        return;
+      }
+
+      const tableData2 = readingData2; // Change to the appropriate data array for Table 2 (readingData1, readingData2, or readingData3)
+
+      const tableBody2 = document.getElementById("testData2"); // Change to the appropriate table body ID for Table 2 (testData1
+
+      tableBody2.innerHTML += `
+        <tr>
+          <td>${tableData2[currPos][0]}</td>
+          <td>${tableData2[currPos][1]}</td>
+        </tr>
+      `;
+
+      currPos++;
+
+      let progress1 = (elongation2.length / tableData2.length) * currPos;
+
+      const chart1Data = {
+        labels: time1,
+        datasets: [
+          {
+            data: elongation1,
+            borderColor: "#3e95cd",
+            fill: false,
+            label: "Test 1",
+          },
+          {
+            data: elongation2.slice(0, progress1),
+            borderColor: "#ff5733", // Choose a different color
+            fill: false,
+            label: "Test 2",
+          },
+        ],
+      };
+      plotGraph(document.getElementById("outputGraphA").getContext("2d"), chart1Data, "Time in hrs", "Strain");
+
+      // document.querySelector(".menu").scrollTo(0, document.querySelector(".menu").scrollHeight);
+    }, 500);
+
+    let intr3 = setInterval(() => {
+      if (!isSecondDone) return;
+
+      if (currPos >= readingData3.length) {
+        clearInterval(intr3);
         document.getElementById("startTest").disabled = false;
         document.getElementById("startTest").innerHTML = "Done";
         document.getElementById("showGraphBtn").disabled = false;
@@ -273,33 +398,48 @@ function handleStep3() {
         return;
       }
 
-      tableBody.innerHTML += `
-          <tr>
-            <td>${readingData[currPos][0]}</td>
-            <td>${readingData[currPos][1]}</td>
-          </tr>
-        `;
+      const tableData3 = readingData3; // Change to the appropriate data array for Table 3 (readingData1, readingData2, or readingData3)
+
+      const tableBody3 = document.getElementById("testData3"); // Change to the appropriate table body ID for Table 3 (testData1, testData2, or testData3)
+
+      tableBody3.innerHTML += `
+        <tr>
+          <td>${tableData3[currPos][0]}</td>
+          <td>${tableData3[currPos][1]}</td>
+        </tr>
+      `;
+
       currPos++;
 
-      let progress1 = (elongation1.length / readingData.length) * currPos;
-      plotGraph(
-        document.getElementById("outputGraphA").getContext("2d"),
-        {
-          labels: time1,
-          datasets: [
-            {
-              data: elongation1.slice(0, progress1),
-              borderColor: "#3e95cd",
-              fill: false,
-            },
-          ],
-        },
-        "Time in hrs",
-        "Strain"
-      );
+      let progress1 = (elongation3.length / tableData3.length) * currPos;
 
-      document.querySelector(".menu").scrollTo(0, document.querySelector(".menu").scrollHeight);
-    }, 600);
+      const chart1Data = {
+        labels: time1,
+        datasets: [
+          {
+            data: elongation1,
+            borderColor: "#3e95cd",
+            fill: false,
+            label: "Test 1",
+          },
+          {
+            data: elongation2,
+            borderColor: "#ff5733", // Choose a different color
+            fill: false,
+            label: "Test 2",
+          },
+          {
+            data: elongation3.slice(0, progress1),
+            borderColor: "#00ff00", // Choose a different color
+            fill: false,
+            label: "Test 3",
+          },
+        ],
+      };
+      plotGraph(document.getElementById("outputGraphA").getContext("2d"), chart1Data, "Time in hrs", "Strain");
+
+      // document.querySelector(".menu").scrollTo(0, document.querySelector(".menu").scrollHeight);
+    }, 500);
   });
 
   pane.classList.add("done");
@@ -311,7 +451,6 @@ function handleStep3() {
 
   currentStepProgress = 4;
 }
-
 function handleStep4() {
   let pane = document.getElementById("step4");
 
@@ -321,7 +460,7 @@ function handleStep4() {
   let next = document.getElementById("step5");
   next.classList.add("active");
   next.classList.remove("disabled");
-
+  utm.destory();
   currentStepProgress = 5;
 
   modal = new Modal({
@@ -392,42 +531,12 @@ function handleStep6() {
   next.classList.add("active");
   next.classList.remove("disabled");
 
-  currentStepProgress = 7;
-}
+  
+  let btn = document.getElementById("btnNext");
+  btn.disabled = true;
+  btn.innerHTML = "Finished";
 
-function handleStep7() {
-  let pane = document.getElementById("step7");
-
-  pane.classList.add("done");
-  pane.classList.remove("active");
-
-  let next = document.getElementById("step8");
-  next.classList.add("active");
-  next.classList.remove("disabled");
-
-  //last
-  document.getElementById("btnNext").disabled = true;
-  // document.getElementById("arrowNext").classList.add("disabled");
-  document.querySelector("#step8 .content").innerHTML = `
-    <table>
-      <tr>
-        <td>Initial Length</td>
-        <td>${sampleLength} mm</td>
-      </tr>
-      <tr>
-        <td>Initial Diameter</td>
-        <td>${sampleDiameter} mm</td>
-      </tr>
-      <tr>
-        <td>Final Length</td>
-        <td>~${sampleLength} mm</td>
-      </tr>
-      <tr>
-        <td>Final Diameter</td>
-        <td>~${sampleDiameter} mm</td>
-      </tr>
-    </table>
-  `;
+  currentStepProgress = 6;
 }
 
 function plotGraph(graphCtx, data, labelX, labelY) {
@@ -444,7 +553,7 @@ function plotGraph(graphCtx, data, labelX, labelY) {
         responsive: true,
         animation: false,
         scaleOverride: true,
-        legend: { display: false },
+        // legend: { display: false },
         scales: {
           xAxes: [
             {
@@ -457,7 +566,7 @@ function plotGraph(graphCtx, data, labelX, labelY) {
                 beginAtZero: true,
                 steps: 20,
                 stepValue: 10,
-                max: Math.max(...time1),
+                // max: Math.max(...time1),
               },
               // stacked: true,
             },
@@ -473,7 +582,7 @@ function plotGraph(graphCtx, data, labelX, labelY) {
                 beginAtZero: true,
                 steps: 10,
                 stepValue: 5,
-                max: Math.max(...elongation1),
+                // max: Math.max(...elongation1),
               },
             },
           ],
@@ -496,31 +605,3 @@ function showGraph() {
   });
   graphModal.show();
 }
-
-/*3. Which of the following stage is also known as the unstable stage?
-a) Transient creep stage
-b) Constant creep stage
-c) Fracture stage
-d) Steady stage creep stage
-
- Which of the following is true?
-a) The slope of the strain-time graph increases with temperature and stress
-b) The slope of strain-time graph decreases with temperature
-c) The slope of strain-time graph decreases with stress
-d) The slope of strain-time graph does not depend on temperature or stress
-
- Creep depends on temperature.
-a) True
-b) False
-
-In which of the following stages do the deformation rate increases and causes failure?
-a) Transient creep stage
-b) Constant creep stage
-c) Fracture stage
-d) Steady stage creep stage
-
- In which of the stages, do we observe a constant deformation rate?
-a) Transient creep stage
-b) Constant creep stage
-c) Fracture stage
-d) Steady stage creep stage*/
