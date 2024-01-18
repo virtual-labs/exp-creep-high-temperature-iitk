@@ -9,6 +9,20 @@
     <script>
       var SAMPLE_ASSETS_PATH = "images/sample-iron/";
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+      /* Add CSS rules for canvas positioning */
+      canvas {
+        display: inline-block;
+        vertical-align: top;
+        margin-left: 10px; /* Adjust this value as needed */
+      }
+
+      .canvas-container {
+        display: inline-block;
+        vertical-align: top;
+      }
+    </style>
   </head>
   <body>
     <div id="app">
@@ -85,6 +99,12 @@
                 <div class="content">
                   <ul>
                     <li>Click below buttons to start the machine.</li>
+
+                    <ul>
+                      <li>Test1 for 153kgf load</li>
+                      <li>Test2 for 168kgf load</li>
+                      <li>Test3 for 184kgf load</li>
+                    </ul>
                   </ul>
                   <div class="mt-1">
                     <button id="startTest">Start Test</button>
@@ -92,7 +112,7 @@
                   </div>
 
                   <canvas id="outputGraphA"></canvas>
-
+                  <!-- Table 1 -->
                   <div class="mt-1 dataTable">
                     <table>
                       <thead>
@@ -101,7 +121,33 @@
                           <td>Elongation Reading (ΔL)</td>
                         </tr>
                       </thead>
-                      <tbody id="testData"></tbody>
+                      <tbody id="testData1"></tbody>
+                    </table>
+                  </div>
+
+                  <!-- Table 2 -->
+                  <div class="mt-1 dataTable">
+                    <table>
+                      <thead>
+                        <tr>
+                          <td>Time in hrs</td>
+                          <td>Elongation Reading (ΔL)</td>
+                        </tr>
+                      </thead>
+                      <tbody id="testData2"></tbody>
+                    </table>
+                  </div>
+
+                  <!-- Table 3 -->
+                  <div class="mt-1 dataTable">
+                    <table>
+                      <thead>
+                        <tr>
+                          <td>Time in hrs</td>
+                          <td>Elongation Reading (ΔL)</td>
+                        </tr>
+                      </thead>
+                      <tbody id="testData3"></tbody>
                     </table>
                   </div>
                 </div>
@@ -120,11 +166,11 @@
                     <li>Place the sample on the venier caliper and take the length.</li>
                   </ul>
 
-                  <div class="mt-1">Change in length is negligible.</div>
+                  <!---- <div class="mt-1">Change in length is negligible.</div>-->
                 </div>
               </div>
 
-              <div id="step7" class="box disabled">
+              <!--<div id="step7" class="box disabled">
                 <div class="label">Step 7: Measure final diameter</div>
                 <div class="content">
                   <ul>
@@ -140,6 +186,14 @@
               <div id="step8" class="box disabled">
                 <div class="label">Step 8: Results</div>
                 <div class="content"></div>
+              </div>
+            </div>-->
+              <div id="step7" class="box disabled">
+                <div class="label">Step 7: Results</div>
+                <div class="content">
+                  <!-- Add your image here -->
+                  <img src="images/img/results.jpeg" alt="Step 7 Image" width="300" />
+                </div>
               </div>
             </div>
 

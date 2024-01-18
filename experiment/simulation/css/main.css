@@ -282,6 +282,10 @@ p {
   --item-bg-hover: rgba(10, 20, 28, 0.09);
 }
 
+.d-none {
+  display: none;
+}
+
 @keyframes menuAnimation {
   0% {
     opacity: 0;
