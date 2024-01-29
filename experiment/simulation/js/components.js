@@ -172,7 +172,7 @@ function VernierCaliper(canvas, ctx) {
       outString(x - 50, y + 4, "Drag sample here", 1, 0);
       ctx.drawImage(arrow, x, y, arrow.width / 2, arrow.height / 2);
     } else if (sampleLoaded == 1) {
-      let x = -15;
+      let x = -20;
       let y = 342;
 
       let currentSample = imgSampleH;
@@ -180,7 +180,7 @@ function VernierCaliper(canvas, ctx) {
         currentSample = imgSampleCrackedH;
       }
 
-      ctx.drawImage(currentSample, x, y, currentSample.width / 2, currentSample.height / 2);
+      ctx.drawImage(currentSample, x, y, (currentSample.width+50) / 2, currentSample.height / 2);
     } else if (sampleLoaded == 2) {
       let x = 66;
       let y = 300;
@@ -935,7 +935,7 @@ function Sample1(canvas, ctx) {
   let menuRotateText = ["Rotate", "Rotate back"];
   let menuRotateIcon = [ContextMenu.rotateRight, ContextMenu.rotateLeft];
 
-  let scale = 0.4;
+  let scale = 0.5;
 
   let isActive = false;
 
