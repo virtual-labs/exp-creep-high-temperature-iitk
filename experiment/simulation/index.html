@@ -97,23 +97,24 @@
               <div id="step4" class="box disabled">
                 <div class="label">Step 4: Start the test.</div>
                 <div class="content">
+                  Click below buttons to start the machine
                   <ul>
-                    <li>Click below buttons to start the machine.</li>
-
-                    <ul>
-                      <li>Test1 for 153kgf load</li>
-                      <li>Test2 for 168kgf load</li>
-                      <li>Test3 for 184kgf load</li>
-                    </ul>
+                    <li>Test1 for 500 MPa load</li>
+                    <li>Test2 for 549 MPa load</li>
+                    <li>Test3 for 602 MPa load</li>
                   </ul>
+
                   <div class="mt-1">
-                    <button id="startTest">Start Test</button>
-                    <button id="showGraphBtn" onclick="showGraph()" disabled>Plot</button>
+                    <button id="startTest" disabled>Start Test</button>
+                    <button id="changeSample" disabled>Next Test</button>
+                    <!-- <button id="showGraphBtn" onclick="showGraph()" disabled>Plot</button> -->
+                    <span>[Furnace Temp: <span id="furnaceTemp">25</span> ℃]</span>
                   </div>
 
                   <canvas id="outputGraphA"></canvas>
                   <!-- Table 1 -->
                   <div class="mt-1 dataTable">
+                    <h5>Test 1</h5>
                     <table>
                       <thead>
                         <tr>
@@ -127,6 +128,7 @@
 
                   <!-- Table 2 -->
                   <div class="mt-1 dataTable">
+                    <h5>Test 2</h5>
                     <table>
                       <thead>
                         <tr>
@@ -140,6 +142,7 @@
 
                   <!-- Table 3 -->
                   <div class="mt-1 dataTable">
+                    <h5>Test 3</h5>
                     <table>
                       <thead>
                         <tr>
@@ -154,46 +157,74 @@
               </div>
 
               <div id="step5" class="box disabled">
-                <div class="label">Step 5: Activity.</div>
-                <div class="content">Click next button to continue.</div>
+                <div class="label">Step 5: Results</div>
+                <div class="content">
+                  <h4>Creep curves at different stresses and corresponding values obtained from creep curves.</h4>
+                  <!-- Add your image here -->
+                  <img src="images/img/results.jpeg" alt="Step 5 Image" width="100%" />
+                  <ul>
+                    <li>
+                      Region I is primary creep regime, Region II is secondary creep regime (creep rate is minimum and stable) and Region III is tertiary Creep regime
+                    </li>
+                    <li>
+                      The creep rate is increasing with increasing stress and is as represented
+                      σ3 > σ2 > σ1 
+                    </li>
+                    <li>
+                      In Curve 1 (500 MPa) and 2 (549 MPa) we can clearly demarcate the primary and secondary creep. In case of 3 (602 MPa) curve the deformation is rapid and primary creep is very limited.
+                    </li>
+                  </ul>
+                  <div class="mt-1 dataTable">
+                    <table id="imageTable">
+                      <thead>
+                        <tr>
+                          <td></td>
+                          <td>Load 1</td>
+                          <td>Load 2</td>
+                          <td>Load 3</td>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>Applied stress (MPa)</td>
+                          <td>500</td>
+                          <td>549</td>
+                          <td>602</td>
+                        </tr>
+                        <tr>
+                          <td>Minimum Creep rate (s<sup>-1</sup>)</td>
+                          <!-- 1.4205E-08 -->
+                          <td>1.405x10<sup>-8</sup></td>
+                          <td>3.28x10<sup>-8</sup></td>
+                          <td>2.95x10<sup>-7</sup></td>
+                        </tr>
+                        <tr>
+                          <td>Instantaneous strain</td>
+                          <td>0.00764</td>
+                          <td>0.00811</td>
+                          <td>0.0152</td>
+                        </tr>
+                        <tr>
+                          <td>Time to fracture in hrs</td>
+                          <td>128.95</td>
+                          <td>104.03</td>
+                          <td>16.138</td>
+                        </tr>
+                        <tr>
+                          <td>Fracture elongation (%)</td>
+                          <td>2.65</td>
+                          <td>2.89</td>
+                          <td>3.17</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
               </div>
 
               <div id="step6" class="box disabled">
-                <div class="label">Step 6: Measure final length.</div>
-                <div class="content">
-                  <ul>
-                    <li>Right click on vernier caliper and click on "Pin"</li>
-                    <li>Place the sample on the venier caliper and take the length.</li>
-                  </ul>
-
-                  <!---- <div class="mt-1">Change in length is negligible.</div>-->
-                </div>
-              </div>
-
-              <!--<div id="step7" class="box disabled">
-                <div class="label">Step 7: Measure final diameter</div>
-                <div class="content">
-                  <ul>
-                    <li>Right click on venier caliper and click on unload sample.</li>
-                    <li>Now, Right click on sample and click on rotate.</li>
-                    <li>Place the sample on the venier caliper and take the diameter.</li>
-                  </ul>
-
-                  <div class="mt-1">Change in diameter is negligible.</div>
-                </div>
-              </div>
-
-              <div id="step8" class="box disabled">
-                <div class="label">Step 8: Results</div>
-                <div class="content"></div>
-              </div>
-            </div>-->
-              <div id="step7" class="box disabled">
-                <div class="label">Step 7: Results</div>
-                <div class="content">
-                  <!-- Add your image here -->
-                  <img src="images/img/results.jpeg" alt="Step 7 Image" width="300" />
-                </div>
+                <div class="label">Step 6: Activity.</div>
+                <div class="content">Click next button to continue.</div>
               </div>
             </div>
 
