@@ -1,0 +1,90 @@
+{
+  "version": 2.0,
+  "questions": [
+    {
+      "question": "1. In which stage, the creep rate is constant?",
+      "answers": {
+        "a": "Primary",
+        "b": "Secondary",
+        "c": "Tertiary",
+        "d": "It is not constant in all the three stages"
+      },
+      "explanations": {
+        "a": "Explanation 1  <a href='www.google.com'>here</a>",
+        "b": "Explanation 2",
+        "c": "Explanation 2",
+        "d": "Explanation 2"
+      },
+      "correctAnswer": "b",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "2. In which of the following tests load is generally kept constant?",
+      "answers": {
+        "a": "Creep testing",
+        "b": "Compression Testing",
+        "c": "Impact Testing",
+        "d": "Tensile Testing"
+      },
+      "explanations": {
+        "a": "Explanation 1  <a href='www.google.com'>here</a>",
+        "b": "Explanation 2",
+        "c": "Explanation 2",
+        "d": "Explanation 2"
+      },
+      "correctAnswer": "a",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "3. It is given that aluminium can creep at and above 0.4 T_m, where T_m has its usual meaning. Calculate the minimum temperature (in <sup>o</sup>C) at which aluminium can creep? Melting point of aluminum is 660 <sup>o</sup>C",
+      "answers": {
+        "a": "Room temperature",
+        "b": "100.2",
+        "c": "264",
+        "d": "660"
+      },
+      "explanations": {
+        "a": "Explanation 1  <a href='www.google.com'>here</a>",
+        "b": "Explanation 2",
+        "c": "Explanation 2",
+        "d": "Explanation 2"
+      },
+      "correctAnswer": "c",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "4. What is/are true for Stage III (tertiary stage) of creep?",
+      "answers": {
+        "a": "The strain rate is the minimum in this stage",
+        "b": "This stage is of shorter duration than secondary stage",
+        "c": "The material deforms with a continuously decreasing creep rate",
+        "d": "The strain hardening rate balances the recovery rate "
+      },
+      "explanations": {
+        "a": "Explanation 1  <a href='www.google.com'>here</a>",
+        "b": "Explanation 2",
+        "c": "Explanation 2",
+        "d": "Explanation 2"
+      },
+      "correctAnswer": "b",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "5. In which stage the effect of strain hardening is more than softening?",
+      "answers": {
+        "a": "Stage I",
+        "b": "Stage II",
+        "c": "Stage III",
+        "d": "Strain hardening is never higher in any stage"
+      },
+      "explanations": {
+        "a": "Explanation 1  <a href='www.google.com'>here</a>",
+        "b": "Explanation 2",
+        "c": "Explanation 2",
+        "d": "Explanation 2"
+      },
+      "correctAnswer": "a",
+      "difficulty": "beginner"
+    }
+  ]
+}
