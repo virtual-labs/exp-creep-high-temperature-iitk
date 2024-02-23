@@ -40,10 +40,10 @@ Creep curves at different stresses and corresponding values obtained from creep 
 - The creep rate is increasing with increasing stress and is as represented σ3 > σ2 > σ1
 - In Curve 1 (500 MPa) and 2 (549 MPa) we can clearly demarcate the primary and secondary creep. In case of 3 (602 MPa) curve the deformation is rapid and primary creep is very limited.
 
-Applied stress (MPa) | Load 1 | Load 2 | Load 3
-Minimum Creep rate (s-1) | 1.405x10-8 | 3.28x10-8 | 2.95x10-7
-Instantaneous strain | 0.00764 | 0.00811 | 0.0152
-Time to fracture in hrs | 128.95 | 104.03 | 16.138
-Fracture elongation (%) | 2.65 | 2.89 | 3.17
+Applied stress (MPa) | Load 1 | Load 2 | Load 3<br>
+Minimum Creep rate (s-1) | 1.405x10-8 | 3.28x10-8 | 2.95x10-7<br>
+Instantaneous strain | 0.00764 | 0.00811 | 0.0152<br>
+Time to fracture in hrs | 128.95 | 104.03 | 16.138<br>
+Fracture elongation (%) | 2.65 | 2.89 | 3.17<br>
 
 
