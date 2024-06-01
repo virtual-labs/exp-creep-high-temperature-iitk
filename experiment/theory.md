@@ -15,8 +15,8 @@ As shown in Fig. 3, higher temperatures and stresses reduce the extent of the pr
 <b>Engineering Stress  (N/mm2)</b>= Load (in Kg)*9.81(m/sec2)/(thickness (mm)*width (mm))<br>
 Strain () = change in length (mm)/Gauge Length (mm)<br>
 We have now included creep curves of aluminum and steel as examples.<br>
-<b>"Fig. 5 </b>shows creep curves of 2219 aluminum alloy at 458 K (at different stresses) and Fig. 6 shows the creep curve of 316H steel at about 550 Deg C"<br>
-<image src="(<Fig. 5 Creep curves of 2219 aluminum alloy at 458 K (1).JPG>)"><br>
+<b>"Fig. 5 shows creep curves of 2219 aluminum alloy at 458 K (at different stresses) and Fig. 6 shows the creep curve of 316H steel at about 550 Deg C"</b><br>
+<image src="![alt text](Image5.JPG)"><br>
 Fig. 5 Creep curves of 2219 aluminum alloy at 458 K <br>
-<image src="(<Fig. 6. Creep curves of 316H Steel (1).JPG>)"><br>
+<image src="![alt text](Image6.JPG)"><br>
 Fig. 6. Creep curves of 316H Steel
