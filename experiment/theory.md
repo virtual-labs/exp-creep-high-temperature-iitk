@@ -23,10 +23,7 @@ As shown in Fig. 3, higher temperatures and stresses reduce the extent of the pr
 Strain () = change in length (mm)/Gauge Length (mm)<br>
 We have now included creep curves of aluminum and steel as examples.<br>
 <b>"Fig. 5 shows creep curves of 2219 aluminum alloy at 458 K (at different stresses) and Fig. 6 shows the creep curve of 316H steel at about 550 Deg C"</b><br>
-<image src="![alt text](Image5.JPG)"><br>
+<image src="image/(Image5.JPG)"><br>
 Fig. 5 Creep curves of 2219 aluminum alloy at 458 K <br>
-<image src="![alt text](Image6.JPG)"><br>
+<image src="image/(Image6.JPG)"><br>
 Fig. 6. Creep curves of 316H Steel
-
-
-
