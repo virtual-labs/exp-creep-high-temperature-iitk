@@ -1,13 +1,252 @@
 <!DOCTYPE html>
-<html>
-<head>
-	<!-- Add CSS at the head of HTML file -->
-    <link rel="stylesheet" href="./css/main.css">
-</head>
-<body>
-		<!-- Your code goes here-->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Creep Test</title>
+    <link rel="stylesheet" href="css/main.css" />
+    <script>
+      var SAMPLE_ASSETS_PATH = "images/sample-iron/";
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+      /* Add CSS rules for canvas positioning */
+      canvas {
+        display: inline-block;
+        vertical-align: top;
+        margin-left: 10px; /* Adjust this value as needed */
+      }
 
-	<!-- Add JS at the bottom of HTML file --> 
-        <script src="./js/main.js"></script>
-</body>
+      .canvas-container {
+        display: inline-block;
+        vertical-align: top;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <div class="menu">
+        <div class="nav-tabs">
+          <div class="nav-item d-none" data-target="#tools">Tools</div>
+          <div class="nav-item active" data-target="#instr">Instructions</div>
+        </div>
+
+        <div class="nav-content">
+          <div id="tools" class="nav-pane">
+            <div class="list text-center">
+              <div>
+                <img label="utmMachine" src="images/img/utm-machine-logo.png" width="100" draggable="true" />
+                <p>UTM Machine</p>
+              </div>
+              <hr />
+              <div>
+                <img label="vernierCaliper" src="images/img/vernier-caliper-logo-sm.png" draggable="true" width="200" />
+                <p>Vernier Caliper</p>
+              </div>
+              <hr />
+              <div>
+                <img label="sample1" src="images/sample-iron/sample1.png" draggable="true" width="200" />
+                <p>Iron Sample</p>
+              </div>
+              <hr />
+            </div>
+          </div>
+
+          <div id="instr" class="nav-pane active">
+            <div id="accordion" class="accordion">
+              <div id="step1" class="box active">
+                <div class="label">Step 1: Gauge length of the sample</div>
+                <div class="content">
+                  <ul>
+                    <li>Drag the vernier caliper.</li>
+                    <li>Right click on vernier caliper and click on pin.</li>
+                    <li>Place the sample on the vernier caliper.</li>
+                    <li>Take the gauge length and enter it below:</li>
+                  </ul>
+                  <div class="mt-1">Length: <input id="step1Length" type="number" value="" /> mm</div>
+                </div>
+              </div>
+
+              <div id="step2" class="box disabled">
+                <div class="label">Step 2: Take the diameter of the sample</div>
+                <div class="content">
+                  <ul>
+                    <li>Right click on vernier caliper and click on unload sample.</li>
+                    <li>Now, Right click on sample and click on rotate.</li>
+                    <li>Place the sample on the vernier caliper.</li>
+                    <li>Take the diameter and enter it below:</li>
+                  </ul>
+
+                  <div class="mt-1">Diameter: <input id="step2Dia" type="number" value="" /> mm</div>
+                </div>
+              </div>
+
+              <div id="step3" class="box disabled">
+                <div class="label">Step 3: Place sample on UTM machine.</div>
+                <div class="content">
+                  <ul>
+                    <li>Right click on sample to rotate.</li>
+                    <li>Now, right click on the machine to pin.</li>
+                    <li>Now,place the sample on the machine.</li>
+                    <li>You can adjust zoom level also (Via Mouse Wheel).</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div id="step4" class="box disabled">
+                <div class="label">Step 4: Start the test.</div>
+                <div class="content">
+                  Click below buttons to start the machine
+                  <ul>
+                    <li>Test1 for 500 MPa load</li>
+                    <li>Test2 for 549 MPa load</li>
+                    <li>Test3 for 602 MPa load</li>
+                  </ul>
+
+                  <div class="mt-1">
+                    <button id="startTest" disabled>Start Test</button>
+                    <button id="changeSample" disabled>Next Test</button>
+                    <!-- <button id="showGraphBtn" onclick="showGraph()" disabled>Plot</button> -->
+                    <span>[Furnace Temp: <span id="furnaceTemp">25</span> ℃]</span>
+                  </div>
+
+                  <canvas id="outputGraphA"></canvas>
+                  <!-- Table 1 -->
+                  <div class="mt-1 dataTable">
+                    <h5>Test 1</h5>
+                    <table>
+                      <thead>
+                        <tr>
+                          <td>Time in hrs</td>
+                          <td>Elongation Reading (ΔL)</td>
+                        </tr>
+                      </thead>
+                      <tbody id="testData1"></tbody>
+                    </table>
+                  </div>
+
+                  <!-- Table 2 -->
+                  <div class="mt-1 dataTable">
+                    <h5>Test 2</h5>
+                    <table>
+                      <thead>
+                        <tr>
+                          <td>Time in hrs</td>
+                          <td>Elongation Reading (ΔL)</td>
+                        </tr>
+                      </thead>
+                      <tbody id="testData2"></tbody>
+                    </table>
+                  </div>
+
+                  <!-- Table 3 -->
+                  <div class="mt-1 dataTable">
+                    <h5>Test 3</h5>
+                    <table>
+                      <thead>
+                        <tr>
+                          <td>Time in hrs</td>
+                          <td>Elongation Reading (ΔL)</td>
+                        </tr>
+                      </thead>
+                      <tbody id="testData3"></tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+
+              <div id="step5" class="box disabled">
+                <div class="label">Step 5: Results</div>
+                <div class="content">
+                  <h4>Creep curves at different stresses and corresponding values obtained from creep curves.</h4>
+                  <!-- Add your image here -->
+                  <img src="images/img/results.jpeg" alt="Step 5 Image" width="100%" />
+                  <ul>
+                    <li>
+                      Region I is primary creep regime, Region II is secondary creep regime (creep rate is minimum and stable) and Region III is tertiary Creep regime
+                    </li>
+                    <li>
+                      The creep rate is increasing with increasing stress and is as represented
+                      σ3 > σ2 > σ1 
+                    </li>
+                    <li>
+                      In Curve 1 (500 MPa) and 2 (549 MPa) we can clearly demarcate the primary and secondary creep. In case of 3 (602 MPa) curve the deformation is rapid and primary creep is very limited.
+                    </li>
+                  </ul>
+                  <div class="mt-1 dataTable">
+                    <table id="imageTable">
+                      <thead>
+                        <tr>
+                          <td></td>
+                          <td>Load 1</td>
+                          <td>Load 2</td>
+                          <td>Load 3</td>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>Applied stress (MPa)</td>
+                          <td>500</td>
+                          <td>549</td>
+                          <td>602</td>
+                        </tr>
+                        <tr>
+                          <td>Minimum Creep rate (s<sup>-1</sup>)</td>
+                          <!-- 1.4205E-08 -->
+                          <td>1.405x10<sup>-8</sup></td>
+                          <td>3.28x10<sup>-8</sup></td>
+                          <td>2.95x10<sup>-7</sup></td>
+                        </tr>
+                        <tr>
+                          <td>Instantaneous strain</td>
+                          <td>0.00764</td>
+                          <td>0.00811</td>
+                          <td>0.0152</td>
+                        </tr>
+                        <tr>
+                          <td>Time to fracture in hrs</td>
+                          <td>128.95</td>
+                          <td>104.03</td>
+                          <td>16.138</td>
+                        </tr>
+                        <tr>
+                          <td>Fracture elongation (%)</td>
+                          <td>2.65</td>
+                          <td>2.89</td>
+                          <td>3.17</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+
+              <div id="step6" class="box disabled">
+                <div class="label">Step 6: Activity.</div>
+                <div class="content">Click next button to continue.</div>
+              </div>
+            </div>
+
+            <div class="actions">
+              <!-- <image src="images/arrow.png" width="25px" class="blink" id="arrowNext" /> -->
+              <button class="btn" id="btnNext" onclick="handle()">Next</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="slider" id="slider"></div>
+      <div class="main">
+        <canvas class="dropzone" id="gui">Your browser does not support the HTML5 canvas tag.</canvas>
+      </div>
+    </div>
+
+    <script src="js/context.js"></script>
+    <script src="js/components.js"></script>
+    <script src="js/modal.js"></script>
+    <script src="js/main.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
+
+    <script src="js/index.js"></script>
+  </body>
 </html>
